@@ -1,0 +1,7 @@
+#!/bin/sh
+
+docker run -it -p 80:80 --domainname example.com \
+           -e "container=docker" --privileged=true \
+           -d --security-opt seccomp:unconfined --cap-add=SYS_ADMIN \
+           -v /sys/fs/cgroup:/sys/fs/cgroup:ro apache bash -c "/usr/sbin/init"
+
